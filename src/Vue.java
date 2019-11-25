@@ -23,7 +23,7 @@ public class Vue extends JFrame {
 	
 	public Vue () {
 		this.setTitle(" TP 9 ");
-		this.setSize(1200, 400);
+		this.setSize(1800, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.p = new JPanel() ;
@@ -31,8 +31,7 @@ public class Vue extends JFrame {
 		JLabel a = new JLabel() ;
 	    a1 = new JLabel() ;
 		p.setBackground(Color.GREEN);
-		v.setBackground(Color.CYAN);
-		//v.setAlignmentX(p.getWidth());
+		v.setBackground(Color.GRAY);
 		p.setLayout(new BorderLayout());
 		//a.setText("Vert");
 		//a.setHorizontalAlignment(JLabel.CENTER);
@@ -43,15 +42,12 @@ public class Vue extends JFrame {
 		a1.setVerticalAlignment(JLabel.CENTER);
 		a1.setFont(new Font("Serif", Font.BOLD, 50));
 		a1.setForeground(Color.WHITE);
+		a1.setText("  Welcome ! ");
 		v.add(a1);
 		this.setLayout(new GridLayout(0,2) );
 		this.getContentPane().add(p);
 	    this.getContentPane().add(v);
-	    // Add a slider to JPanel p
-	  //  JPanel o = new JPanel();
-	//  o.setBorder((Border) new TitledBorder(new EtchedBorder(), "Selected Date"));
-	  //  o.setBorder(BorderFactory.createTitledBorder("hi"));
-	    //o.setVerticalAlignment(JLabel.CENTER);
+	
 		this.s = new JSlider(JSlider.HORIZONTAL,0,100,0);
 		s.setMajorTickSpacing(25);
 		s.setMinorTickSpacing(5);
@@ -86,32 +82,29 @@ public class Vue extends JFrame {
 		b.addActionListener(click -> {
 			memoriser();
 		});
+		b.setPreferredSize(new Dimension(200,100));
 		this.b1 = new JButton("S'en rappeler");
+		b1.setPreferredSize(new Dimension(200,100));
 		b1.addActionListener( click -> {
-		   if( m != null)
+		   if( memoire != null)
 			ctrl.rappeler( memoire);
 		});
 		this.b2 = new JButton("Complementaire");
+		b2.setPreferredSize(new Dimension(200,100));
 		b2.addActionListener( click -> {
 			ctrl.complementary();
 		});
-		JPanel l = new JPanel(new FlowLayout());
-		l.setAlignmentX(Component.CENTER_ALIGNMENT);
-		l.setAlignmentY(Component.CENTER_ALIGNMENT);
-
-		//p.setLayout(new GridLayout(5,1));
+		JPanel l = new JPanel(new FlowLayout(FlowLayout.CENTER ,50 , 30 ));
+		
 		p.setLayout(new BoxLayout(p,BoxLayout.Y_AXIS));
 		p.add(s);
 		p.add(s1);
 		p.add(s2);
-		//p.setLayout(new FlowLayout());
-		b.setOpaque(true);
 		b.setHorizontalAlignment(JButton.CENTER);
 		b.setVerticalAlignment(JButton.CENTER);
 		l.add(b);
 		l.add(b1);
 		l.add(b2);
-		//l.setLocation(s2.getX(), s2.getY()+s2.getHeight());
 		p.add(l);
 
 	}
@@ -119,7 +112,7 @@ public class Vue extends JFrame {
 	public void miseAJour() {
 		
 		this.v.setBackground(m.getC());
-		a1.setText("#"+Integer.toHexString(m.getC().getRGB() & 0xffffff));
+		a1.setText(String.format("#%6s",Integer.toHexString(m.getC().getRGB() & 0xffffff)));
 
 	}
 	

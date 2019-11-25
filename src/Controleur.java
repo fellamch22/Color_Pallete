@@ -22,8 +22,8 @@ public class Controleur {
    }
    
    public void complementary() {
-	   e.moveSliders(new Color(~ m.getC().getRed() ,~ m.getC().getGreen() , ~ m.getC().getBlue()) );
-	   sliderMoved (new Color(~ m.getC().getRed() ,~ m.getC().getGreen() , ~ m.getC().getBlue()) );
-	 
+	   sliderMoved (new Color(100 - m.getC().getRed() ,100 - m.getC().getGreen() , 100 - m.getC().getBlue()) );
+	  e.moveSliders( new Color(100 -  m.getC().getRed() ,100 - m.getC().getGreen() , 100 - m.getC().getBlue()) );
+	  
    }
 }
